@@ -132,11 +132,12 @@ export default function AuthPage() {
         <motion.div key={mode} initial={{ opacity: 0, x: isRegister ? 16 : -16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: isRegister ? -16 : 16 }} transition={{ duration: 0.2 }}>
           <h2 className="text-2xl font-bold text-ink-50">{isRegister ? 'Join your campus crew' : 'Welcome back'}</h2>
           <p className="mt-1 text-sm text-ink-400">{isRegister ? 'Sign up with your college email. Takes 30 seconds.' : 'Sign in to check on your stuff.'}</p>
-
           {config.googleClientId && (
             <div className="mt-6">
               <GoogleButton onCredential={onGoogle} text={isRegister ? 'signup_with' : 'continue_with'} />
-              <p className="mt-2 text-center text-xs text-ink-500">Use your @{config.collegeDomains[0] || 'college'} Google account</p>
+              <p className="mt-2 text-center text-xs text-ink-500">
+                Use your {config.collegeDomains?.map((d) => `@${d}`).join(' or ') || '@college'} Google account
+              </p>
               {config.passwordLogin !== false && (
                 <div className="mt-5 flex items-center gap-3 text-xs text-ink-500">
                   <span className="h-px flex-1 bg-ink-700" /> or use email <span className="h-px flex-1 bg-ink-700" />
