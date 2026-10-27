@@ -24,7 +24,7 @@ services:
       - key: CLIENT_URL
         sync: false          # Your Vercel URL, e.g. https://boomerang.vercel.app
       - key: COLLEGE_EMAIL_DOMAINS
-        value: sst.scaler.com
+        value: sst.scaler.com,scaler.com
       - key: CLOUDINARY_CLOUD_NAME
         value: tttxczrf
       - key: CLOUDINARY_API_KEY
