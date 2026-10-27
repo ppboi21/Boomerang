@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#07070a" />
+    <meta name="description" content="The lost & found for SST students. Lose it, find it, get it back." />
+    <title>boomerang · campus lost & found</title>
+    <script>
+      // Apply the saved theme before first paint (avoids a flash of the wrong theme).
+      (function () {
+        var t = 'dark';
+        try { t = (JSON.parse(localStorage.getItem('bm_prefs') || '{}').theme) || 'dark'; } catch (e) {}
+        if (t === 'system') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.dataset.theme = t;
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

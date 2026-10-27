@@ -1,0 +1,15 @@
+{
+  "name": "boomerang",
+  "private": true,
+  "description": "Campus-only lost & found portal (MERN + Socket.IO)",
+  "scripts": {
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently -n api,web -c green,magenta \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix client",
+    "seed": "npm run seed --prefix server",
+    "seed:clear": "npm run seed:clear --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  }
+}

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1e4e4"/><stop offset="1" stop-color="#dcc0c0"/></linearGradient>
+<radialGradient id="lt" cx=".3" cy=".2" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<rect width="800" height="600" fill="url(#bg)"/><rect width="800" height="600" fill="url(#lt)"/>
+<rect y="430" width="800" height="170" fill="#000" opacity=".06"/>
+<ellipse cx="400" cy="500" rx="230" ry="22" fill="#000" opacity=".18"/>
+<path d="M260 180 q140-90 280 0 l90 90 -50 60 -40-30 v200 h-280 v-200 l-40 30 -50-60z" fill="#22252b"/>
+<path d="M340 160 q60 70 120 0" fill="#30343b"/><path d="M380 210 v60 M420 210 v60" stroke="#c8ff2e" stroke-width="6" stroke-linecap="round"/>
+<rect x="320" y="370" width="160" height="70" rx="18" fill="#30343b"/>
+<text x="400" y="330" font-family="Arial Black,Arial" font-weight="900" font-size="36" text-anchor="middle" fill="#c8ff2e">SST</text>
+</svg>

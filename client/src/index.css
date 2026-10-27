@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+/* ---------- Theme palettes ----------
+   "ink" is a neutral scale where 950 = page background and 50 = strongest
+   text, so light mode simply flips the scale. Accent fills (zap, grape, ...)
+   stay the same; "*-fg" variants are the readable text versions per theme. */
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink-950: #07070a; --ink-900: #0e0e13; --ink-850: #13131a; --ink-800: #191921;
+  --ink-700: #24242e; --ink-600: #32323e; --ink-500: #5b5b6b; --ink-400: #8b8b9c;
+  --ink-300: #ababba; --ink-200: #cdcdd8; --ink-100: #e6e6ee; --ink-50: #f5f5f8;
+  --zap-fg: #c8ff2e; --grape-fg: #a98bff; --cobalt-fg: #9fb3ff; --sun-fg: #ffc94d; --coral-fg: #ff6b5b;
+  --dot: rgb(255 255 255 / 0.06);
+  --page-bg:
+    radial-gradient(900px 520px at -10% -10%, rgb(169 139 255 / 0.08), transparent 60%),
+    radial-gradient(900px 560px at 110% -5%, rgb(200 255 46 / 0.05), transparent 60%),
+    #07070a;
+  --card-shadow: 0 0 #0000;
+  --card-shadow-hover: 0 24px 48px -28px rgb(0 0 0 / 0.9);
+  --pop-shadow: 0 30px 80px -30px rgb(0 0 0 / 0.85);
+}
+/* Light: lavender-tinted whites, colour washes behind the page, real depth on cards. */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --ink-950: #f3f1fa; --ink-900: #ffffff; --ink-850: #faf9fe; --ink-800: #eeecf6;
+  --ink-700: #e0dded; --ink-600: #ccc8de; --ink-500: #8b879f; --ink-400: #5f5b74;
+  --ink-300: #46425a; --ink-200: #322f43; --ink-100: #1f1c2e; --ink-50: #110f1c;
+  --zap-fg: #4a7c00; --grape-fg: #6741e0; --cobalt-fg: #2f4fd8; --sun-fg: #946200; --coral-fg: #d2361f;
+  --dot: rgb(76 50 180 / 0.09);
+  --page-bg:
+    radial-gradient(900px 620px at -8% -12%, rgb(169 139 255 / 0.55), transparent 62%),
+    radial-gradient(900px 560px at 108% -8%, rgb(200 255 46 / 0.7), transparent 58%),
+    radial-gradient(800px 620px at 105% 105%, rgb(91 124 255 / 0.32), transparent 60%),
+    radial-gradient(760px 560px at -5% 108%, rgb(255 168 120 / 0.38), transparent 60%),
+    #f4f1ff;
+  --card-shadow: 0 1px 2px rgb(31 28 46 / 0.04), 0 10px 28px -14px rgb(76 50 180 / 0.18);
+  --card-shadow-hover: 0 2px 4px rgb(31 28 46 / 0.05), 0 26px 44px -20px rgb(76 50 180 / 0.34);
+  --pop-shadow: 0 2px 6px rgb(31 28 46 / 0.05), 0 40px 80px -36px rgb(76 50 180 / 0.45);
+}
+
+/* ---------- Design tokens ---------- */
+@theme inline {
+  --color-ink-950: var(--ink-950); --color-ink-900: var(--ink-900); --color-ink-850: var(--ink-850);
+  --color-ink-800: var(--ink-800); --color-ink-700: var(--ink-700); --color-ink-600: var(--ink-600);
+  --color-ink-500: var(--ink-500); --color-ink-400: var(--ink-400); --color-ink-300: var(--ink-300);
+  --color-ink-200: var(--ink-200); --color-ink-100: var(--ink-100); --color-ink-50: var(--ink-50);
+  --color-zap-fg: var(--zap-fg); --color-grape-fg: var(--grape-fg); --color-cobalt-fg: var(--cobalt-fg);
+  --color-sun-fg: var(--sun-fg); --color-coral-fg: var(--coral-fg);
+  --shadow-card: var(--card-shadow); --shadow-card-hover: var(--card-shadow-hover); --shadow-pop: var(--pop-shadow);
+}
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque Variable", "Inter Variable", ui-sans-serif, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Menlo, monospace;
+
+  /* Accent fills, identical in both themes */
+  --color-zap: #c8ff2e;
+  --color-zap-hi: #d8ff6a;
+  --color-grape: #a98bff;
+  --color-cobalt: #5b7cff;
+  --color-sun: #ffc94d;
+  --color-coral: #ff6b5b;
+  /* Text that sits ON an accent fill: always near-black */
+  --color-night: #0b0b0f;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-spin-slow: spin 18s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(3deg); }
+  }
+  @keyframes shimmer {
+    from { background-position: -200% 0; }
+    to { background-position: 200% 0; }
+  }
+}
+
+/* ---------- Base ---------- */
+@layer base {
+  html { -webkit-tap-highlight-color: transparent; }
+  body {
+    @apply font-sans text-ink-100 antialiased;
+    background: var(--page-bg);
+    background-attachment: fixed;
+    min-height: 100dvh;
+    transition: color 0.3s ease;
+  }
+  [id] { scroll-margin-top: 6rem; }
+  ::selection { background: var(--color-zap); color: var(--color-night); }
+  :focus-visible { outline: 2px solid var(--zap-fg); outline-offset: 2px; border-radius: 8px; }
+  h1, h2, h3 { @apply font-display tracking-tight; }
+  input[type="date"]::-webkit-calendar-picker-indicator { cursor: pointer; }
+  :root[data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.8); }
+}
+
+/* ---------- Reusable pieces ---------- */
+@layer components {
+  .input {
+    @apply h-12 w-full rounded-xl border border-ink-700 bg-ink-900 px-4 text-base sm:text-[15px] text-ink-50 placeholder:text-ink-500 transition-[border-color,box-shadow];
+  }
+  .input:hover { @apply border-ink-600; }
+  .input:focus { @apply border-zap-fg outline-none ring-4 ring-zap/20; }
+  .input[aria-invalid="true"] { @apply border-coral ring-coral/15; }
+  textarea.input { @apply h-auto min-h-28 resize-y py-3 leading-relaxed; }
+  select.input { @apply cursor-pointer appearance-none pr-10; }
+
+  .panel { @apply rounded-3xl border border-ink-800 bg-ink-900/80 shadow-card; }
+  .label { @apply mb-1.5 block text-sm font-medium text-ink-200; }
+  .eyebrow { @apply font-mono text-[11px] uppercase tracking-[0.18em] text-ink-400; }
+
+  /* Ambient dot grid used behind pages */
+  .bg-dots {
+    background-image: radial-gradient(circle at 1px 1px, var(--dot) 1px, transparent 0);
+    background-size: 22px 22px;
+  }
+  .skeleton {
+    background: linear-gradient(90deg, var(--color-ink-800) 25%, var(--color-ink-700) 50%, var(--color-ink-800) 75%);
+    background-size: 200% 100%;
+    @apply animate-shimmer rounded-xl;
+  }
+  .scrollbar-none { scrollbar-width: none; }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+}
+
+/* Respect reduced motion: OS setting or the in-app preference */
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion="full"]) *, html:not([data-motion="full"]) *::before, html:not([data-motion="full"]) *::after {
+    animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important;
+  }
+}
+html[data-motion="reduce"] *, html[data-motion="reduce"] *::before, html[data-motion="reduce"] *::after {
+  animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important;
+}
+
+/* ---------- Light-mode personality ----------
+   Hook classes that only add colour in light mode; dark mode is unaffected. */
+:root[data-theme="light"] .auth-card {
+  border-color: transparent;
+  background:
+    linear-gradient(var(--ink-900), var(--ink-900)) padding-box,
+    linear-gradient(135deg, #c8ff2e, #a98bff 55%, #5b7cff) border-box;
+}
+:root[data-theme="light"] .hl {
+  background: linear-gradient(transparent 58%, rgb(200 255 46 / 0.9) 58%, rgb(200 255 46 / 0.9) 92%, transparent 92%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+:root[data-theme="light"] .hero-card {
+  background:
+    radial-gradient(600px 300px at 100% 0%, rgb(200 255 46 / 0.55), transparent 60%),
+    radial-gradient(500px 300px at 0% 100%, rgb(169 139 255 / 0.35), transparent 60%),
+    #ffffff;
+}
+:root[data-theme="light"] .side-nav {
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.75), rgb(244 241 255 / 0.6));
+}
+:root[data-theme="light"] .tint-rings { border-color: rgb(107 65 224 / 0.35); }
+
+/* ---------- Notched phones / home-indicator safe areas ---------- */
+.safe-bottom { bottom: max(0.75rem, env(safe-area-inset-bottom)); }
+.safe-top { padding-top: env(safe-area-inset-top); }
+/* Landscape phones are very short: tighten the sticky form bar so it doesn't cover the form. */
+@media (max-height: 480px) and (orientation: landscape) {
+  .safe-bottom { bottom: 0.25rem; }
+}

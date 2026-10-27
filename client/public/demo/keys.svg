@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#efe6d8"/><stop offset="1" stop-color="#d8c7ab"/></linearGradient>
+<radialGradient id="lt" cx=".3" cy=".2" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<rect width="800" height="600" fill="url(#bg)"/><rect width="800" height="600" fill="url(#lt)"/>
+<rect y="430" width="800" height="170" fill="#000" opacity=".06"/>
+<ellipse cx="400" cy="470" rx="200" ry="20" fill="#000" opacity=".18"/>
+<circle cx="300" cy="250" r="70" fill="none" stroke="#9aa3ad" stroke-width="14"/>
+<g fill="#c9a227"><rect x="330" y="290" width="230" height="44" rx="10" transform="rotate(18 330 290)"/><circle cx="330" cy="300" r="52"/>
+<rect x="500" y="355" width="22" height="40" transform="rotate(18 500 355)"/><rect x="460" y="342" width="22" height="30" transform="rotate(18 460 342)"/></g>
+<circle cx="330" cy="300" r="16" fill="#efe6d8"/>
+<g fill="#aab4bf"><rect x="250" y="320" width="44" height="200" rx="10" transform="rotate(-28 270 320)"/><circle cx="265" cy="315" r="46"/></g>
+<circle cx="265" cy="315" r="14" fill="#efe6d8"/>
+<rect x="180" y="150" width="90" height="56" rx="16" fill="#e8455d" transform="rotate(-15 225 178)"/>
+<text x="196" y="190" font-family="Arial" font-weight="bold" font-size="22" fill="#fff" transform="rotate(-15 225 178)">B-204</text>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#efeadf"/><stop offset="1" stop-color="#d6ccb4"/></linearGradient>
+<radialGradient id="lt" cx=".3" cy=".2" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<rect width="800" height="600" fill="url(#bg)"/><rect width="800" height="600" fill="url(#lt)"/>
+<rect y="430" width="800" height="170" fill="#000" opacity=".06"/>
+<ellipse cx="400" cy="480" rx="220" ry="20" fill="#000" opacity=".18"/>
+<g transform="rotate(-5 400 300)"><rect x="230" y="130" width="340" height="320" rx="16" fill="#1f8a5b"/>
+<rect x="230" y="130" width="40" height="320" rx="10" fill="#176b46"/>
+<circle cx="250" cy="160" r="7" fill="#efeadf"/><circle cx="250" cy="198" r="7" fill="#efeadf"/><circle cx="250" cy="236" r="7" fill="#efeadf"/><circle cx="250" cy="274" r="7" fill="#efeadf"/><circle cx="250" cy="312" r="7" fill="#efeadf"/><circle cx="250" cy="350" r="7" fill="#efeadf"/><circle cx="250" cy="388" r="7" fill="#efeadf"/><circle cx="250" cy="426" r="7" fill="#efeadf"/>
+<rect x="320" y="190" width="200" height="64" rx="8" fill="#fff"/><text x="420" y="232" font-family="Arial" font-weight="bold" font-size="26" text-anchor="middle" fill="#1f2a24">DSA notes</text></g>
+</svg>

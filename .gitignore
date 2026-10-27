@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Secrets - never commit these
+.env
+.env.*
+!.env.example
+
+# Build output
+dist/
+client/dist/
+
+# Local dev image uploads (production uses Cloudinary)
+server/uploads/*
+!server/uploads/.gitkeep
+
+# Logs and OS files
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json

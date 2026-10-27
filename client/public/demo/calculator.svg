@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e3ece6"/><stop offset="1" stop-color="#bcd3c4"/></linearGradient>
+<radialGradient id="lt" cx=".3" cy=".2" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<rect width="800" height="600" fill="url(#bg)"/><rect width="800" height="600" fill="url(#lt)"/>
+<rect y="430" width="800" height="170" fill="#000" opacity=".06"/>
+<ellipse cx="400" cy="490" rx="160" ry="18" fill="#000" opacity=".18"/>
+<g transform="rotate(8 400 300)"><rect x="270" y="110" width="260" height="370" rx="26" fill="#2a2d33"/>
+<rect x="300" y="140" width="200" height="70" rx="8" fill="#b9d7a8"/><text x="480" y="192" font-family="Courier New" font-size="40" text-anchor="end" fill="#2a2d33">3.1416</text>
+<rect x="300" y="235" width="40" height="42" rx="8" fill="#4a4f58"/><rect x="352" y="235" width="40" height="42" rx="8" fill="#4a4f58"/><rect x="404" y="235" width="40" height="42" rx="8" fill="#4a4f58"/><rect x="456" y="235" width="40" height="42" rx="8" fill="#ff8a3d"/><rect x="300" y="291" width="40" height="42" rx="8" fill="#4a4f58"/><rect x="352" y="291" width="40" height="42" rx="8" fill="#4a4f58"/><rect x="404" y="291" width="40" height="42" rx="8" fill="#4a4f58"/><rect x="456" y="291" width="40" height="42" rx="8" fill="#ff8a3d"/><rect x="300" y="347" width="40" height="42" rx="8" fill="#4a4f58"/><rect x="352" y="347" width="40" height="42" rx="8" fill="#4a4f58"/><rect x="404" y="347" width="40" height="42" rx="8" fill="#4a4f58"/><rect x="456" y="347" width="40" height="42" rx="8" fill="#ff8a3d"/><rect x="300" y="403" width="40" height="42" rx="8" fill="#4a4f58"/><rect x="352" y="403" width="40" height="42" rx="8" fill="#4a4f58"/><rect x="404" y="403" width="40" height="42" rx="8" fill="#4a4f58"/><rect x="456" y="403" width="40" height="42" rx="8" fill="#ff8a3d"/></g>
+</svg>
