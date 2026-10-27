@@ -1,5 +1,4 @@
-# boomerang. 
-campus lost & found
+# boomerang. campus lost & found
 
 A members-only lost & found portal for **@sst.scaler.com** students and staff.
 Report lost or found items with photos, browse and search, get "potential match" suggestions,
