@@ -1,0 +1,39 @@
+# Render Blueprint — one-click backend deployment.
+# https://render.com/docs/infrastructure-as-code
+#
+# To use:  Render Dashboard → New → Blueprint → connect this repo.
+# Then fill in the env-var values Render prompts you for.
+
+services:
+  - type: web
+    name: boomerang-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false          # Render will prompt you to enter this
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: CLIENT_URL
+        sync: false          # Your Vercel URL, e.g. https://boomerang.vercel.app
+      - key: COLLEGE_EMAIL_DOMAINS
+        value: sst.scaler.com
+      - key: CLOUDINARY_CLOUD_NAME
+        value: tttxczrf
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: CLOUDINARY_FOLDER
+        value: campus-lost-found
+      - key: GOOGLE_CLIENT_ID
+        value: 128717773317-mbh3mevi77bufusqva0qh08dh2c6at2t.apps.googleusercontent.com
+      - key: GOOGLE_ONLY
+        value: "false"
