@@ -150,49 +150,71 @@ export default function AuthPage() {
           )}
 
           {config.passwordLogin !== false && (
-          <form onSubmit={onSubmit} noValidate className={config.googleClientId ? 'mt-5 space-y-4' : 'mt-6 space-y-4'}>
-            {isRegister && (
-              <Field label="Full name" error={errors.name}>
-                {(p) => <Input {...p} icon={User} autoComplete="name" placeholder="Aanya Sharma" value={form.name} onChange={set('name')} />}
+            <form onSubmit={onSubmit} noValidate className={config.googleClientId ? 'mt-5 space-y-4' : 'mt-6 space-y-4'}>
+              {isRegister && (
+                <Field label="Full name" error={errors.name}>
+                  {(p) => <Input {...p} icon={User} autoComplete="name" placeholder="Aanya Sharma" value={form.name} onChange={set('name')} />}
+                </Field>
+              )}
+              <Field label="College email" error={errors.email} hint={isRegister && config.collegeDomains[0] ? `Must end with @${config.collegeDomains.join(' or @')}` : undefined}>
+                {(p) => (
+                  <Input {...p} icon={Mail} type="email" autoComplete="email" inputMode="email" placeholder={`you@${config.collegeDomains[0] || 'sst.scaler.com'}`} value={form.email} onChange={set('email')} />
+                )}
               </Field>
-            )}
-            <Field label="College email" error={errors.email} hint={isRegister && config.collegeDomains[0] ? `Must end with @${config.collegeDomains.join(' or @')}` : undefined}>
-              {(p) => (
-                <Input {...p} icon={Mail} type="email" autoComplete="email" inputMode="email" placeholder={`you@${config.collegeDomains[0] || 'college.edu'}`} value={form.email} onChange={set('email')} />
+              <Field label="Password" error={errors.password} hint={isRegister ? '8+ characters, with a letter and a number' : undefined}>
+                {(p) => (
+                  <Input
+                    {...p}
+                    icon={Lock}
+                    type={showPw ? 'text' : 'password'}
+                    autoComplete={isRegister ? 'new-password' : 'current-password'}
+                    placeholder="••••••••"
+                    value={form.password}
+                    onChange={set('password')}
+                    trailing={
+                      <button type="button" onClick={() => setShowPw((s) => !s)} className="grid size-9 place-items-center rounded-lg text-ink-400 hover:text-ink-100" aria-label={showPw ? 'Hide password' : 'Show password'}>
+                        {showPw ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                      </button>
+                    }
+                  />
+                )}
+              </Field>
+
+              {!isRegister && (
+                <div className="flex items-center justify-between rounded-xl border border-ink-700/60 bg-ink-900/60 p-3 text-xs">
+                  <div>
+                    <div className="font-semibold text-ink-200">Demo / Test Account</div>
+                    <div className="mt-0.5 text-ink-400">
+                      <span className="select-all font-mono text-ink-300">test@scaler.com</span> · <span className="select-all font-mono text-ink-300">test1234</span>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setForm((f) => ({ ...f, email: 'test@scaler.com', password: 'test1234' }));
+                      setErrors({});
+                      play('click');
+                    }}
+                    className="rounded-lg border border-zap/30 bg-zap/10 px-2.5 py-1 text-xs font-semibold text-zap-fg transition hover:bg-zap/20"
+                  >
+                    Auto-fill
+                  </button>
+                </div>
               )}
-            </Field>
-            <Field label="Password" error={errors.password} hint={isRegister ? '8+ characters, with a letter and a number' : undefined}>
-              {(p) => (
-                <Input
-                  {...p}
-                  icon={Lock}
-                  type={showPw ? 'text' : 'password'}
-                  autoComplete={isRegister ? 'new-password' : 'current-password'}
-                  placeholder="••••••••"
-                  value={form.password}
-                  onChange={set('password')}
-                  trailing={
-                    <button type="button" onClick={() => setShowPw((s) => !s)} className="grid size-9 place-items-center rounded-lg text-ink-400 hover:text-ink-100" aria-label={showPw ? 'Hide password' : 'Show password'}>
-                      {showPw ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
-                    </button>
-                  }
-                />
+
+              {!isRegister && config.passwordResetAvailable !== false && (
+                <div className="-mt-1 text-right">
+                  <Link to="/forgot-password" className="text-sm text-ink-400 hover:text-zap-fg">Forgot password?</Link>
+                </div>
               )}
-            </Field>
 
-            {!isRegister && config.passwordResetAvailable !== false && (
-              <div className="-mt-1 text-right">
-                <Link to="/forgot-password" className="text-sm text-ink-400 hover:text-zap-fg">Forgot password?</Link>
-              </div>
-            )}
+              {errors.form && <p role="alert" className="rounded-xl border border-coral/30 bg-coral/10 p-3 text-sm text-coral-fg">{errors.form}</p>}
 
-            {errors.form && <p role="alert" className="rounded-xl border border-coral/30 bg-coral/10 p-3 text-sm text-coral-fg">{errors.form}</p>}
-
-            <Button type="submit" size="lg" className="group w-full" loading={submitting} sound={false}>
-              {isRegister ? 'Create account' : 'Sign in'}
-              {!submitting && <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden />}
-            </Button>
-          </form>
+              <Button type="submit" size="lg" className="group w-full" loading={submitting} sound={false}>
+                {isRegister ? 'Create account' : 'Sign in'}
+                {!submitting && <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden />}
+              </Button>
+            </form>
           )}
 
           {isRegister && (
